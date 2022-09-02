@@ -1,7 +1,5 @@
 # Checklist
 
-- [ ] Add LICENSE
-
 - [ ] happy path: draft the code to read the file with the corresponding unit tests.
 
 - [ ] refactor to classes.
@@ -15,6 +13,8 @@
 - [ ] After finishing, post on "r/PKMS" subreddit and others (LinkedIn, etc...) - there may me more people interested to collect feedback from there.
 
 - [x] Add sample markdown files to <etc/samples>
+
+- [x] Add LICENSE
 
 - [x] [lib for yaml frontmatter](https://github.com/eyeseast/python-frontmatter)
 
