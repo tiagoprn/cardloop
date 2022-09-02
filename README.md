@@ -2,6 +2,8 @@
 
 Reads markdown files with a yaml frontmatter and with questions and answers, to use as a simple CLI spaced repetition program ("anki-like").
 
+**IMPORTANT: This is work in progress. You can check the TODO List to version "1.0" [here](TODO.md) (that is also WIP ;)**
+
 ## Setting up the development environment
 
 1. Make sure you have pyenv installed. If not, install it.
