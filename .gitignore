@@ -1,0 +1,8 @@
+.idea/
+.ropeproject/
+*.pyc
+__pycache__/
+*.log
+*.env
+.coverage
+
