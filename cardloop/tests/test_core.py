@@ -3,7 +3,7 @@
 import pytest
 import time_machine
 
-from cardloop.sample_script import greet
+from cardloop.core import greet
 
 
 @pytest.mark.parametrize(

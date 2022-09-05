@@ -4,7 +4,7 @@
 TODO: Edit here with a good description of what does this script do.
 
 TODO: Provide an example to how to use it with its parameters. E.g.:
-    python3 sample_script.py <name>
+    python3 core.py <name>
 """
 
 import argparse
