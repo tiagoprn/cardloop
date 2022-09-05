@@ -1,6 +1,6 @@
 # Checklist
 
-- [ ] happy path: draft the code to read the file with the corresponding unit tests.
+- [ ] happy path: draft the code to read the file with the corresponding unit tests - use [typer library](https://github.com/tiangolo/typer).
 
 - [ ] refactor to classes.
 
