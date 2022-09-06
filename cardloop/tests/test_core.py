@@ -1,27 +1,23 @@
-# from datetime import datetime
+from pathlib import Path
 
 import pytest
-import time_machine
 
-from cardloop.core import greet
+from cardloop.core import process_file
 
 
 @pytest.mark.parametrize(
-    "name,fake_current_datetime,time",
+    "file_name, expected_exception_type",
     [
-        ["Hal Jordan", "2021-01-01 05:59", "night"],
-        ["Hal Jordan", "2021-01-01 06:00", "morning"],
-        ["Hal Jordan", "2021-01-01 11:59", "morning"],
-        ["Hal Jordan", "2021-01-01 12:00", "afternoon"],
-        ["Hal Jordan", "2021-01-01 17:59", "afternoon"],
-        ["Hal Jordan", "2021-01-01 18:00", "night"],
-        ["Hal Jordan", "2021-01-01 18:01", "night"],
-        ["Hal Jordan", "2021-01-01 23:59", "night"],
-        ["Hal Jordan", "2021-01-01 00:00", "night"],
+        ["Hal Jordan", AttributeError],
+        ["Picard", AttributeError],
+        [Path("/tmp/you-rock.md"), FileNotFoundError],
+        [Path("/home/you/noooooo.md"), FileNotFoundError],
+        [Path("Hal Jordan"), FileNotFoundError],
+        [Path("Picard"), FileNotFoundError],
     ],
 )
-def test_greet(name, fake_current_datetime, time):
-    with time_machine.travel(fake_current_datetime, tick=False):
-        result = greet(name)
-        expected_result = f"Hello {name}! Have a good {time}!"
-        assert result == expected_result
+def test_process_file_when_file_does_not_exist(
+    file_name, expected_exception_type
+):
+    with pytest.raises(expected_exception_type):
+        process_file(file_name)

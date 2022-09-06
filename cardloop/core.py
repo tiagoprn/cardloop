@@ -7,10 +7,15 @@ TODO: Provide an example to how to use it with its parameters. E.g.:
     python3 core.py <name>
 """
 
-import argparse
 import logging
 import os
-from datetime import datetime
+import sys
+from pathlib import Path
+
+import typer
+
+app = typer.Typer()
+
 
 CURRENT_SCRIPT_NAME = os.path.splitext(os.path.basename(__file__))[0]
 LOG_FORMAT = (
@@ -24,27 +29,20 @@ logging.basicConfig(
     level=logging.INFO,
     handlers=[
         logging.FileHandler(f"{CURRENT_SCRIPT_NAME}.log"),
-        # logging.StreamHandler(stdout)
+        logging.StreamHandler(sys.stdout),
     ],
 )
 
 
-def greet(name: str) -> str:
-    now = datetime.now()
+@app.command()
+def process_file(file_path: Path):
+    if not file_path.is_file():
+        raise FileNotFoundError(
+            f"Not a file, or file does not exist: '{file_path}'"
+        )
 
-    if now.hour >= 18 or now.hour < 6:
-        time = "night"
-    elif now.hour >= 6 and now.hour < 12:
-        time = "morning"
-    elif now.hour >= 12 and now.hour < 18:
-        time = "afternoon"
-
-    return f"Hello {name}! Have a good {time}!"
+    print(f"Ready to process file '{file_path}'...")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("name", type=str, help="type the person name here")
-    parsed_arguments = parser.parse_args()
-    message = greet(parsed_arguments.name)
-    print(message)
+    app()

@@ -46,4 +46,4 @@ coverage: clean  ## Run the test coverage report
 	@py.test --cov-config .coveragerc --cov $(PROJECT_NAME) $(PROJECT_NAME) --cov-report term-missing
 
 run: ## Run the script on the sample file as input
-	@python cardloop/core.py "Hal Jordan"
+	@python cardloop/core.py "etc/samples/2022-04-05-180326-814.md"
