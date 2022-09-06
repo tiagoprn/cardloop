@@ -35,13 +35,18 @@ logging.basicConfig(
 
 
 @app.command()
-def process_file(file_path: Path):
-    if not file_path.is_file():
-        raise FileNotFoundError(
-            f"Not a file, or file does not exist: '{file_path}'"
-        )
-
-    print(f"Ready to process file '{file_path}'...")
+def process_file(
+    file_path: Path = typer.Option(
+        default=None,
+        exists=True,
+        file_okay=True,
+        dir_okay=False,
+        writable=False,
+        readable=True,
+        resolve_path=True,
+    )
+):
+    print(f"Processing file '{file_path}'...")
 
 
 if __name__ == "__main__":
