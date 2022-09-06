@@ -1,6 +1,8 @@
 # Checklist
 
-- [ ] happy path: draft the code to read the file with the corresponding unit tests - use [typer library](https://github.com/tiangolo/typer).
+- [-] happy path: draft the code to read the file with the corresponding unit tests - use [typer library](https://github.com/tiangolo/typer).
+
+- [ ] fix: check why `make coverage` is failing when `make test` is passing.
 
 - [ ] refactor to classes.
 
