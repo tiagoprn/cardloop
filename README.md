@@ -4,6 +4,14 @@ Reads markdown files with a yaml frontmatter and with questions and answers, to 
 
 **IMPORTANT: This is work in progress. You can check the TODO List to version "1.0" [here](TODO.md) (that is also WIP ;)**
 
+
+## Libraries used
+
+- typer: a wrapper to handle CLI arguments using type annotations
+- python-frontmatter: to extract the yaml frontmatter from markdown files
+- pydantic: a wrapper to validation using type annotations - used to validate the yaml frontmatter
+
+
 ## Setting up the development environment
 
 1. Make sure you have pyenv installed. If not, install it.
