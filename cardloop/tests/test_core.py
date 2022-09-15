@@ -1,7 +1,7 @@
 import pytest
 from typer.testing import CliRunner
 
-from cardloop.core import app
+from cardloop.core import app, get_yaml_frontmatter
 
 runner = CliRunner()
 
@@ -39,3 +39,21 @@ def test_expected_stdout_when_file_exists(file_name):
     assert result.exit_code == 0
     for substring in expected_stdout:
         assert substring in result.stdout
+
+
+@pytest.mark.parametrize(
+    "file_name,expected_keys",
+    [
+        [
+            "../etc/samples/2022-04-05-180326-814.md",
+            ["author", "title", "date", "categories", "tags"],
+        ],
+        [
+            "../etc/samples/2022-04-16-102521-814.md",
+            ["author", "title", "date", "categories", "tags", "references"],
+        ],
+    ],
+)
+def test_get_yaml_frontmatter_keys(file_name, expected_keys):
+    frontmatter = get_yaml_frontmatter(file_name)
+    assert list(frontmatter.keys()) == expected_keys

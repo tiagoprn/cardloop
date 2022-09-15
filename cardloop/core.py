@@ -12,6 +12,7 @@ import os
 import sys
 from pathlib import Path
 
+import frontmatter
 import typer
 
 app = typer.Typer()
@@ -32,6 +33,11 @@ logging.basicConfig(
         logging.StreamHandler(sys.stdout),
     ],
 )
+
+
+def get_yaml_frontmatter(file_path: Path) -> dict:
+    with open(file_path, "r", encoding="utf-8") as input_file:
+        return frontmatter.load(input_file)
 
 
 @app.command()
